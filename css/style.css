@@ -2203,17 +2203,17 @@ button {
   position: absolute;
   bottom: 10px;
   left: -150px; /* Start offscreen */
-  width: 80px;
-  height: 120px;
+  width: 150px;
+  height: 325px;
   z-index: 10;
   transform-origin: bottom center;
 }
 .walking-character.is-walking {
   animation: walk-bob 0.5s infinite alternate ease-in-out;
 }
-.walking-character video {
+.walking-character img {
   width: 100%;
-  height: 100%;
+  height: 137%;
   object-fit: contain;
   object-position: bottom;
 }
@@ -2231,7 +2231,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 187%;
   display: flex;
   justify-content: space-around;
   align-items: center;
