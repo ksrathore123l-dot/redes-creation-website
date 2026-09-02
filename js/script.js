@@ -3,11 +3,15 @@ const mainNav = document.querySelector(".main-nav");
 
 menuToggle?.addEventListener("click", () => {
   const open = mainNav.classList.toggle("open");
+  menuToggle.classList.toggle("open", open);
   menuToggle.setAttribute("aria-expanded", String(open));
 });
 
 document.querySelectorAll(".main-nav a").forEach((link) => {
-  link.addEventListener("click", () => mainNav.classList.remove("open"));
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuToggle.classList.remove("open");
+  });
 });
 
 // Reveal animations
@@ -159,10 +163,19 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Fix card flip animation on page load
-document.querySelectorAll(".service-card").forEach((card) => {
-  card.addEventListener("mouseenter", () => card.classList.add("hovered"), {
-    once: true,
+// Fix card flip animation on page load and handle touch/hover correctly
+const serviceCards = document.querySelectorAll(".service-card");
+serviceCards.forEach((card) => {
+  // Mobile tap
+  card.addEventListener("click", (e) => {
+    if (e.target.closest('.expand-btn') || e.target.closest('.learn-more')) return;
+    
+    if (card.classList.contains("is-flipped")) {
+       card.classList.remove("is-flipped");
+    } else {
+       serviceCards.forEach(c => c.classList.remove("is-flipped"));
+       card.classList.add("is-flipped");
+    }
   });
 });
 
@@ -293,3 +306,19 @@ if (trustedSlider && trustedPrev && trustedNext) {
     trustedSlider.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 }
+
+// Blog Card Flip logic
+const blogCards = document.querySelectorAll(".premium-blog-card-wrapper");
+blogCards.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    if (e.target.closest(".read-more")) return; // Let link work
+    if (card.classList.contains("is-flipped")) {
+      card.classList.remove("is-flipped");
+    } else {
+      blogCards.forEach(c => c.classList.remove("is-flipped"));
+      card.classList.add("is-flipped");
+    }
+  });
+});
+
+

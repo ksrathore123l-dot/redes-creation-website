@@ -192,7 +192,21 @@ button {
   display: block;
   height: 2px;
   background: #111;
-  margin: 6px;
+  margin: 6px auto;
+  width: 25px;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .hero {
@@ -620,6 +634,7 @@ button {
   background: transparent;
   position: relative;
   z-index: 3;
+  cursor: pointer;
 }
 
 .service-card-front,
@@ -641,7 +656,7 @@ button {
   );
   border: 1px solid rgba(75, 110, 160, 0.25);
   z-index: 2;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
   transform-origin: bottom center;
 }
 
@@ -652,20 +667,17 @@ button {
   flex-direction: column;
   box-shadow: 0 18px 45px rgba(11, 89, 221, 0.25);
   z-index: 1;
-  opacity: 0; /* Hidden by default so it doesn't bleed through the semi-transparent front */
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-/* Smooth return animation when mouse leaves, but only if it was hovered before */
-.service-card.hovered:not(:hover) .service-card-back {
-  animation: pushIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.service-card:hover .service-card-front {
+.service-card.is-flipped .service-card-front {
   transform: scale(0.95);
   z-index: 1;
+  opacity: 0;
 }
 
-.service-card:hover .service-card-back {
+.service-card.is-flipped .service-card-back {
   animation: pullOut 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -690,31 +702,6 @@ button {
     transform: translateY(0);
     z-index: 3;
     opacity: 1;
-  }
-}
-
-@keyframes pushIn {
-  0% {
-    transform: translateY(0);
-    z-index: 3;
-    opacity: 1;
-  }
-  40% {
-    transform: translateY(-110%);
-    z-index: 3;
-  }
-  50% {
-    transform: translateY(-110%);
-    z-index: 1;
-    opacity: 1;
-  }
-  99% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0);
-    z-index: 1;
-    opacity: 0;
   }
 }
 
@@ -1738,6 +1725,8 @@ button {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   text-decoration: none;
   transition: 0.25s;
   min-width: 140px;
@@ -1753,11 +1742,12 @@ button {
   margin-bottom: 4px;
 }
 .action-btn .big-text {
+  padding-left: 0;
   font-size: 15px;
   font-weight: 700;
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 .social-links {
@@ -1947,10 +1937,7 @@ button {
   .brand {
     width: 190px;
   }
-  .brand img {
-    height: 68px;
-    width: 190px;
-  }
+
   .main-nav {
     position: absolute;
     top: 72px;
@@ -2474,6 +2461,7 @@ button {
 }
 .premium-blog-card-wrapper {
   perspective: 1500px;
+  cursor: pointer;
 }
 .premium-blog-card {
   background: #ffffff;
@@ -2488,7 +2476,7 @@ button {
   transform-style: preserve-3d;
   height: 100%;
 }
-.premium-blog-card-wrapper:hover .premium-blog-card {
+.premium-blog-card-wrapper.is-flipped .premium-blog-card {
   transform: translateY(-8px) rotateY(360deg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
@@ -2504,8 +2492,10 @@ button {
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-.premium-blog-card:hover .blog-img-wrapper img {
-  transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+  .premium-blog-card:hover .blog-img-wrapper img {
+    transform: scale(1.05);
+  }
 }
 .blog-tag {
   position: absolute;
@@ -2610,6 +2600,7 @@ button {
   animation-delay: 0s;
 }
 .card-cheracter-3 {
+  width: 220px;
   padding-bottom: 24px;
   position: absolute;
   top: 0;
@@ -3148,4 +3139,116 @@ button {
     font-size: 28px;
   }
 }
+
+
+/* =========================================================================
+   GLOBAL MOBILE RESPONSIVENESS FIXES
+   ========================================================================= */
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img, video {
+  max-width: 100%;
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-copy h1 {
+    font-size: 38px;
+    line-height: 1.2;
+  }
+  .hero-lead {
+    font-size: 16px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .hero-btn-outline, .hero-btn-cyan {
+   width: 71%;
+    text-align: center;
+  }
+  
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+   padding: 0px 52px;
+
+    gap: 15px;
+    margin-left: 0;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+  
+  .expertise-track {
+    overflow: hidden;
+  }
+  
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer-middle {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-copy h1 {
+    font-size: 32px;
+  }
+  
+  .stats-bar {
+    grid-template-columns: 1fr !important;
+  }
+
+  .service-grid, .cap-grid, .blog-grid, .projects-grid, .why-grid, .process-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .bubbles-container {
+    padding: 0 5px;
+  }
+  .expertise-bubble {
+    width: auto;
+    height: auto;
+  }
+  .bubble-text {
+    font-size: 13px;
+  }
+}
+
+
+
+
 
