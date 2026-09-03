@@ -321,4 +321,14 @@ blogCards.forEach((card) => {
   });
 });
 
-
+////////////////////////////////////// service js //////////////////////////////////////////////////
+document.querySelectorAll(".service-card .plus").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const card=btn.closest(".service-card");
+    card.classList.toggle("expanded");
+    btn.textContent=card.classList.contains("expanded")?"−":"+";
+  });
+});
+document.querySelector(".play")?.addEventListener("click",()=>{
+  document.querySelector("#services").scrollIntoView({behavior:"smooth"});
+});
