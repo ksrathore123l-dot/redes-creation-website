@@ -423,3 +423,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (processSection) observer.observe(processSection);
   }
 });
+
+// Floating Cards Mobile Accordion
+document.addEventListener("DOMContentLoaded", () => {
+  const floatingCards = document.querySelectorAll(".floating-card");
+  floatingCards.forEach(card => {
+    card.addEventListener("click", () => {
+      // Only execute logic on mobile size
+      if (window.innerWidth <= 768) {
+        if (card.classList.contains("active")) {
+          card.classList.remove("active");
+        } else {
+          floatingCards.forEach(c => c.classList.remove("active"));
+          card.classList.add("active");
+        }
+      }
+    });
+  });
+});
+

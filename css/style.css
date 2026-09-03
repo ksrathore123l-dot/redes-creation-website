@@ -3855,3 +3855,67 @@ img, video {
     width: 95%;
   }
 }
+
+/* Mobile responsive for floating cards (Hero Section) */
+@media (max-width: 768px) {
+  .floating-card {
+    width: 53px;
+    height: 53px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border-radius: 50%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .floating-card b,
+  .floating-card span,
+  .floating-card i {
+    display: none;
+  }
+  .floating-card .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 1;
+    font-size: 26px; /* Ensure icon is large enough */
+  }
+  
+  .floating-card.active {
+    width: 144px;
+    height: 130px;
+    border-radius: 18px;
+    padding: 15px 15px 14px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .floating-card.active b,
+  .floating-card.active span,
+  .floating-card.active i {
+    display: block;
+  }
+  .floating-card.active .card-icon {
+    width: auto;
+    height: auto;
+    font-size: 23px; /* Revert to original size */
+  }
+  
+  /* Ensure cards anchored to bottom expand downwards by switching to top anchoring */
+  .ai-card {
+    bottom: auto;
+    top: 365px; 
+  }
+  .software-card {
+    bottom: auto;
+    top: 385px;
+  }
+  .brand-card {
+    bottom: auto;
+    top: 410px;
+  }
+}
+
