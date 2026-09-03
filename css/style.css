@@ -2786,6 +2786,8 @@ button {
   height: 10px;
   background-color: #00b4d8;
   border-radius: 50%;
+  position: relative;
+  box-shadow: none;
 }
 .process-title {
   font-size: 36px;
@@ -3274,11 +3276,11 @@ video {
     padding: 0 5px;
   }
   .expertise-bubble {
-    width: auto;
-    height: auto;
+    width: 75px;
+    height: 75px;
   }
   .bubble-text {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 
@@ -3482,6 +3484,8 @@ video {
   height: 7px;
   background-color: #0db4f3;
   border-radius: 50%;
+  position: relative;
+  box-shadow: none;
 }
 .process-title-blue {
   font-family: "Manrope", sans-serif;
