@@ -332,3 +332,94 @@ document.querySelectorAll(".service-card .plus").forEach(btn=>{
 document.querySelector(".play")?.addEventListener("click",()=>{
   document.querySelector("#services").scrollIntoView({behavior:"smooth"});
 });
+// Auto counter animation for Service Stats
+document.addEventListener("DOMContentLoaded", () => {
+  const statsBars = document.querySelectorAll('.stats-bar');
+  
+  statsBars.forEach(statsBar => {
+    const counters = statsBar.querySelectorAll('.stat-info strong[data-count]');
+    let countersStarted = false;
+    
+    if (counters.length > 0) {
+      const animateCounters = () => {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-count');
+          const duration = 2000; // 2 seconds
+          const increment = target / (duration / 16);
+          
+          let current = 0;
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = Math.ceil(current) + "+";
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.innerText = target + "+";
+            }
+          };
+          updateCounter();
+        });
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersStarted) {
+            countersStarted = true;
+            animateCounters();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(statsBar);
+    }
+  });
+});
+
+// Auto animate process step rings
+document.addEventListener("DOMContentLoaded", () => {
+  const processSteps = document.querySelectorAll('.step-icon[data-progress]');
+  let processStarted = false;
+  
+  if (processSteps.length > 0) {
+    // Initial state
+    processSteps.forEach(step => {
+      step.style.setProperty('--progress', '0%');
+    });
+
+    const animateProcess = () => {
+      processSteps.forEach((step, index) => {
+        // Stagger animation based on index
+        setTimeout(() => {
+          const target = +step.getAttribute('data-progress');
+          const duration = 1500; // 1.5s
+          const increment = target / (duration / 16);
+          let current = 0;
+          
+          const updateProgress = () => {
+            current += increment;
+            if (current < target) {
+              step.style.setProperty('--progress', current + '%');
+              requestAnimationFrame(updateProgress);
+            } else {
+              step.style.setProperty('--progress', target + '%');
+            }
+          };
+          updateProgress();
+        }, index * 400); // 400ms delay between each step
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !processStarted) {
+          processStarted = true;
+          animateProcess();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    // Observe the parent container instead of individual elements for a single trigger
+    const processSection = document.querySelector('.steps');
+    if (processSection) observer.observe(processSection);
+  }
+});
