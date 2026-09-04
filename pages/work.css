@@ -11,7 +11,7 @@
   --line: #dce5f1;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
   color: var(--text);
   background: #fff;
 }
@@ -120,6 +120,10 @@ a {
   font-size: 62px;
   line-height: 1.02;
   margin: 20px 0;
+}
+.hero-art img {
+  height: 445px;
+  position: relative;
 }
 .hero-copy h1 span {
   color: #62c4ff;
@@ -251,6 +255,16 @@ a {
   z-index: 4;
   box-shadow: 0 15px 35px #001c533d;
   min-width: 155px;
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
 }
 .stat-card b,
 .stat-card span {
@@ -271,10 +285,12 @@ a {
 .s2 {
   right: -2%;
   top: 140px;
+  animation-delay: 2s;
 }
 .s3 {
   right: 1%;
   top: 255px;
+  animation-delay: 3s;
 }
 
 .portfolio {
