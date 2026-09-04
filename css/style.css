@@ -1056,7 +1056,7 @@ button {
   transform: scale(1.05);
 }
 .project-card div {
-padding: 22px 28px;
+  padding: 22px 28px;
   background: #091221;
   position: relative;
   z-index: 2;
@@ -2052,14 +2052,14 @@ padding: 22px 28px;
     text-align: center;
   }
   .footer-top {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .locations-wrap {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   .footer-middle {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
   .actions-wrap {
     align-items: flex-start;
@@ -3185,9 +3185,11 @@ video {
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   /* Re-enable selection for inputs so users can type in forms */
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     -webkit-user-select: auto;
     -moz-user-select: auto;
     -ms-user-select: auto;
@@ -3586,13 +3588,12 @@ video {
   clip-path: inset(0 0 0 0);
 }
 
-
 .arc-1,
 .arc-2 {
   border-color: rgba(255, 255, 255, 0.25);
 }
 .arc-3 {
-  border-color: rgba(255, 255, 255, 0.25)
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .process-step-blue h3 {

@@ -786,12 +786,12 @@ form {
     font-size: 9px;
     margin-top: 4px;
   }
-  .card-a {
-    left: -14%;
-    top: 0%;
-  }
-  .card-b {
-    right: -18%;
-    top: -2%;
-  }
+     .card-a {
+        left: -9%;
+        top: -6%;
+    }
+      .card-b {
+        right: -8%;
+        top: -9%;
+    }
 }
