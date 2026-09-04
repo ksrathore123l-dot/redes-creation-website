@@ -129,7 +129,7 @@ a {
   position: relative;
   overflow: hidden;
   background: linear-gradient(110deg, #0a43ae, #155bd0);
-  color: #fff;
+  color: #000000;
   min-height: 330px;
 }
 .hero:after {
@@ -164,11 +164,18 @@ a {
   margin-bottom: 16px;
 }
 .eyebrow.light {
-  color: #fff;
-  border: 1px solid #ffffff66;
+  color: #ffffff;
+  border: 1px solid #0c0c0c66;
   padding: 8px 13px;
   border-radius: 20px;
-  background: #ffffff12;
+  background: #1260df;
+}
+.hero-visual img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
 }
 .hero h1 {
   font-size: clamp(42px, 5vw, 65px);
@@ -177,19 +184,25 @@ a {
   letter-spacing: -2.2px;
 }
 .hero h1 span {
-  color: #b8d2ff;
+  color: #1d5cc8;
 }
 .hero p {
   font-size: 18px;
   line-height: 1.7;
   max-width: 620px;
   margin-top: 22px;
-  color: #e9f0ff;
+  color: #000000;
 }
 .hero-visual {
-  height: 330px;
   position: relative;
+  text-align: center;
 }
+.hero-art-wrapper {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+}
+
 .orb {
   position: absolute;
   border-radius: 50%;
@@ -270,12 +283,14 @@ a {
   position: absolute;
   background: #fff;
   color: var(--text);
-  padding: 17px 18px;
+  padding: 2px 11px;
   border-radius: 15px;
   box-shadow: 0 14px 30px #001b5833;
-  width: 175px;
+  width: 170px;
   z-index: 6;
+  animation: floatUpDown 4s ease-in-out infinite;
 }
+
 .float-card i {
   display: block;
   color: #1260df;
@@ -294,12 +309,23 @@ a {
   margin-top: 7px;
 }
 .card-a {
-  left: 25px;
-  top: 55px;
+  left: -29%;
+  top: -2%;
 }
 .card-b {
-  right: 5px;
-  top: 105px;
+  right: -32%;
+  top: -6%;
+  animation-delay: 2s;
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
 }
 
 .contact-section {
@@ -454,7 +480,7 @@ form {
   border: 0;
 }
 .project-cta {
-  margin-top: 22px;
+  margin: 15px auto !important;
   border-radius: 17px;
   background: linear-gradient(120deg, #0d45bb, #1567ee);
   color: #fff;
@@ -550,6 +576,15 @@ form {
   font-size: 11px;
 }
 
+@media (max-width: 1250px) {
+  .card-a {
+    left: -32%;
+  }
+  .card-b {
+    right: -24%;
+  }
+}
+
 @media (max-width: 900px) {
   .main-nav {
     gap: 18px;
@@ -570,21 +605,25 @@ form {
     padding-top: 55px;
   }
   .hero-visual {
-    height: 250px;
-    margin-top: 10px;
+    height: auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
   }
-  .person {
-    right: 34%;
-    transform: scale(0.85);
-    transform-origin: bottom;
+  .hero-visual img {
+    max-width: 100%;
+    height: auto;
+    max-height: 507px;
+    margin: 0 auto;
+    display: block;
   }
   .card-a {
-    left: 2%;
-    top: 25px;
+    left: -74px;
+    top: -10px;
   }
   .card-b {
-    right: 0;
-    top: 50px;
+    right: -29%;
+    top: -4%;
+    animation-delay: 2s;
   }
   .contact-box {
     grid-template-columns: 1fr;
@@ -665,11 +704,16 @@ form {
     font-size: 15px;
   }
   .hero-visual {
-    height: 280px;
+    height: auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
   }
-  .person {
-    right: 22%;
-    transform: scale(0.7);
+  .hero-visual img {
+    max-width: 100%;
+    height: auto;
+    max-height: 507px;
+    margin: 0 auto;
+    display: block;
   }
   .float-card {
     width: 145px;
@@ -679,12 +723,12 @@ form {
     font-size: 10px;
   }
   .card-a {
-    left: 0;
-    top: 30px;
+    left: -63px;
+    top: -9px;
   }
   .card-b {
-    right: 0;
-    top: 100px;
+    right: -72px;
+    top: -13px;
   }
   .contact-box {
     padding: 30px 22px;
@@ -720,5 +764,34 @@ form {
   .footer-bottom {
     flex-direction: column;
     gap: 8px;
+  }
+}
+@media (max-width: 570px) {
+  .hero-visual img {
+    max-height: 430px;
+  }
+  .float-card {
+    width: 125px;
+    padding: 9px;
+    border-radius: 12px;
+  }
+  .float-card i {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .float-card strong {
+    font-size: 12px;
+  }
+  .float-card small {
+    font-size: 9px;
+    margin-top: 4px;
+  }
+  .card-a {
+    left: -14%;
+    top: 0%;
+  }
+  .card-b {
+    right: -18%;
+    top: -2%;
   }
 }
