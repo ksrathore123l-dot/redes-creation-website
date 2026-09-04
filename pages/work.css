@@ -122,6 +122,7 @@ a {
   margin: 20px 0;
 }
 .hero-art img {
+      margin-right: 89px;
   height: 445px;
   position: relative;
 }
@@ -267,14 +268,14 @@ a {
   }
 }
 .stat-card b,
-.stat-card span {
+.stat-card > span {
   display: block;
 }
 .stat-card b {
   font-size: 22px;
   color: var(--blue);
 }
-.stat-card span {
+.stat-card > span {
   font-size: 15px;
   margin-top: 4px;
 }
@@ -379,7 +380,6 @@ article.project-card:hover .project-image img {
 }
 
 article.project-card .project-image::after {
-  content: "🎓";
   position: absolute;
   left: 20px;
   bottom: -25px;
@@ -523,9 +523,9 @@ article.project-card:hover .project-content a span {
 .stats strong {
   font-size: 28px;
 }
-.stats span {
+.stats > div > span {
   display: block;
-  font-size: 11px;
+  font-size: 15px;
   margin-top: 5px;
   color: #56677e;
 }
@@ -564,6 +564,31 @@ footer {
   justify-content: space-between;
 }
 
+@media (max-width: 1200px) {
+  .hero-copy h1 {
+    font-size: 56px;
+  }
+  .work-hero {
+    gap: 40px;
+  }
+  .hero-art img {
+    margin-right: 170px;
+    height: 410px;
+  }
+  .s1 {
+    right: -2%;
+  }
+  .s2 {
+        right: -15%;
+  }
+  .s3 {
+            right: -7%;
+  }
+  .project-grid {
+    gap: 15px;
+  }
+}
+
 @media (max-width: 1050px) {
   .nav-links {
     gap: 16px;
@@ -588,16 +613,17 @@ footer {
 
 @media (max-width: 850px) {
   .hero-art img {
+    margin-right: 152px;
     height: 380px;
   }
   .s1 {
-    right: -5%;
+    right: -10%;
   }
   .s2 {
     right: -10%;
   }
   .s3 {
-    right: -5%;
+    right: -15%;
   }
 }
 
@@ -634,21 +660,40 @@ footer {
   .work-hero {
     grid-template-columns: 1fr;
     padding: 60px 6%;
-    text-align: center;
+    text-align: left;
+  }
+  .work-hero .eyebrow {
+    background: #fff;
+    color: var(--blue);
+    padding: 5px 18px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .work-hero .eyebrow i {
+    display: none;
   }
   .hero-copy {
-    margin: 0 auto;
+    margin: 0;
   }
   .hero-actions {
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .hero-actions .primary-btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 25px;
   }
   .hero-copy h1 {
     font-size: 42px;
   }
   .hero-copy p {
     font-size: 16px;
-    margin: 0 auto;
+    margin: 0;
   }
   .hero-art {
     height: auto;
@@ -673,18 +718,19 @@ footer {
     font-size: 12px;
   }
   .s1 {
-    right: auto;
-    left: 77%;
-    top: -5px;
+    right: 0%;
+    left: auto;
+    top: 20px;
   }
   .s2 {
-    right: -5%;
-    top: 100px;
+    right: auto;
+    left: 0%;
+    top: 180px;
   }
   .s3 {
-    right: auto;
-    left: 78%;
-    top: 196px;
+    right: 0%;
+    left: auto;
+    top: 250px;
   }
   .portfolio {
     padding: 50px 6%;
@@ -733,16 +779,21 @@ footer {
     padding: 8px 10px;
   }
   .s1 {
-    top: 0px;
-    left: 71%;
+    top: 20px;
+    left: auto;
+    right: 0%;
   }
-  .s2 {
-    top: 80px;
-    right: -5%;
-  }
+     .s2 {
+        top: auto;
+        bottom: 99px;
+        right: auto;
+        left: 39%;
+    }
   .s3 {
-    top: 170px;
-    left: 71%;
+    top: auto;
+    bottom: 20px;
+    left: auto;
+    right: 0%;
   }
   .stats {
     grid-template-columns: 1fr;

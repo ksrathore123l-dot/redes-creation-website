@@ -1147,7 +1147,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 8px;
+  /* margin-right: 8px; */
   font-size: 11px;
   font-weight: 700;
 }
@@ -1234,7 +1234,7 @@ footer {
     padding-left: 0;
     margin: 0 auto;
     display: block;
-    max-width: 100%;
+    max-width: 84%;
     height: auto;
   }
 

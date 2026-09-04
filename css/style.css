@@ -1724,7 +1724,7 @@ padding: 22px 28px;
 .action-btn {
   background: #2d7af5;
   color: #fff;
-  padding: 12px 20px;
+  padding: 0px 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
