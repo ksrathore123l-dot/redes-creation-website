@@ -1,7 +1,3 @@
-const menuBtn = document.querySelector(".menu-btn");
-const nav = document.querySelector(".nav-links");
-menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
-
 const filterButtons = document.querySelectorAll(".filters button");
 const cards = document.querySelectorAll(".project-card");
 
@@ -30,5 +26,44 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
         target.scrollIntoView({ behavior: "smooth" });
       }
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".auto-count");
+
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = +counter.getAttribute("data-target");
+          const duration = 2000;
+          const start = performance.now();
+          
+          counter.innerText = "0";
+
+          function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const current = Math.floor(progress * target);
+            counter.innerText = current;
+            
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              counter.innerText = target;
+            }
+          }
+
+          requestAnimationFrame(tick);
+          observer.unobserve(counter);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  counters.forEach((counter) => {
+    counterObserver.observe(counter);
   });
 });

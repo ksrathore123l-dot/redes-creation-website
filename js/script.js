@@ -137,19 +137,22 @@ const activeObserver = new IntersectionObserver(
 
     if (currentActiveId) {
       navLinks.forEach((a) => {
-        a.classList.toggle("active", a.getAttribute("href") === "#" + currentActiveId);
+        a.classList.toggle(
+          "active",
+          a.getAttribute("href") === "#" + currentActiveId,
+        );
       });
     }
   },
-  { rootMargin: "-30% 0px -70% 0px", threshold: 0 }
+  { rootMargin: "-30% 0px -70% 0px", threshold: 0 },
 );
 
 sections.forEach((section) => activeObserver.observe(section));
 
 // Click event for nav links to ensure active state applies immediately
-navLinks.forEach(link => {
-  link.addEventListener("click", function() {
-    navLinks.forEach(a => a.classList.remove("active"));
+navLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    navLinks.forEach((a) => a.classList.remove("active"));
     this.classList.add("active");
     // The mobile menu close logic if any (optional)
     document.querySelector(".main-nav")?.classList.remove("open");
@@ -168,13 +171,14 @@ const serviceCards = document.querySelectorAll(".service-card");
 serviceCards.forEach((card) => {
   // Mobile tap
   card.addEventListener("click", (e) => {
-    if (e.target.closest('.expand-btn') || e.target.closest('.learn-more')) return;
-    
+    if (e.target.closest(".expand-btn") || e.target.closest(".learn-more"))
+      return;
+
     if (card.classList.contains("is-flipped")) {
-       card.classList.remove("is-flipped");
+      card.classList.remove("is-flipped");
     } else {
-       serviceCards.forEach(c => c.classList.remove("is-flipped"));
-       card.classList.add("is-flipped");
+      serviceCards.forEach((c) => c.classList.remove("is-flipped"));
+      card.classList.add("is-flipped");
     }
   });
 });
@@ -315,38 +319,38 @@ blogCards.forEach((card) => {
     if (card.classList.contains("is-flipped")) {
       card.classList.remove("is-flipped");
     } else {
-      blogCards.forEach(c => c.classList.remove("is-flipped"));
+      blogCards.forEach((c) => c.classList.remove("is-flipped"));
       card.classList.add("is-flipped");
     }
   });
 });
 
 ////////////////////////////////////// service js //////////////////////////////////////////////////
-document.querySelectorAll(".service-card .plus").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const card=btn.closest(".service-card");
+document.querySelectorAll(".service-card .plus").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".service-card");
     card.classList.toggle("expanded");
-    btn.textContent=card.classList.contains("expanded")?"−":"+";
+    btn.textContent = card.classList.contains("expanded") ? "−" : "+";
   });
 });
-document.querySelector(".play")?.addEventListener("click",()=>{
-  document.querySelector("#services").scrollIntoView({behavior:"smooth"});
+document.querySelector(".play")?.addEventListener("click", () => {
+  document.querySelector("#services").scrollIntoView({ behavior: "smooth" });
 });
 // Auto counter animation for Service Stats
 document.addEventListener("DOMContentLoaded", () => {
-  const statsBars = document.querySelectorAll('.stats-bar');
-  
-  statsBars.forEach(statsBar => {
-    const counters = statsBar.querySelectorAll('.stat-info strong[data-count]');
+  const statsBars = document.querySelectorAll(".stats-bar");
+
+  statsBars.forEach((statsBar) => {
+    const counters = statsBar.querySelectorAll(".stat-info strong[data-count]");
     let countersStarted = false;
-    
+
     if (counters.length > 0) {
       const animateCounters = () => {
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-count');
+        counters.forEach((counter) => {
+          const target = +counter.getAttribute("data-count");
           const duration = 2000; // 2 seconds
           const increment = target / (duration / 16);
-          
+
           let current = 0;
           const updateCounter = () => {
             current += increment;
@@ -361,14 +365,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !countersStarted) {
-            countersStarted = true;
-            animateCounters();
-          }
-        });
-      }, { threshold: 0.1 });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !countersStarted) {
+              countersStarted = true;
+              animateCounters();
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
 
       observer.observe(statsBar);
     }
@@ -377,31 +384,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Auto animate process step rings
 document.addEventListener("DOMContentLoaded", () => {
-  const processSteps = document.querySelectorAll('.step-icon[data-progress]');
+  const processSteps = document.querySelectorAll(".step-icon[data-progress]");
   let processStarted = false;
-  
+
   if (processSteps.length > 0) {
     // Initial state
-    processSteps.forEach(step => {
-      step.style.setProperty('--progress', '0%');
+    processSteps.forEach((step) => {
+      step.style.setProperty("--progress", "0%");
     });
 
     const animateProcess = () => {
       processSteps.forEach((step, index) => {
         // Stagger animation based on index
         setTimeout(() => {
-          const target = +step.getAttribute('data-progress');
+          const target = +step.getAttribute("data-progress");
           const duration = 1500; // 1.5s
           const increment = target / (duration / 16);
           let current = 0;
-          
+
           const updateProgress = () => {
             current += increment;
             if (current < target) {
-              step.style.setProperty('--progress', current + '%');
+              step.style.setProperty("--progress", current + "%");
               requestAnimationFrame(updateProgress);
             } else {
-              step.style.setProperty('--progress', target + '%');
+              step.style.setProperty("--progress", target + "%");
             }
           };
           updateProgress();
@@ -409,17 +416,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !processStarted) {
-          processStarted = true;
-          animateProcess();
-        }
-      });
-    }, { threshold: 0.2 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !processStarted) {
+            processStarted = true;
+            animateProcess();
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
 
     // Observe the parent container instead of individual elements for a single trigger
-    const processSection = document.querySelector('.steps');
+    const processSection = document.querySelector(".steps");
     if (processSection) observer.observe(processSection);
   }
 });
@@ -427,18 +437,17 @@ document.addEventListener("DOMContentLoaded", () => {
 // Floating Cards Mobile Accordion
 document.addEventListener("DOMContentLoaded", () => {
   const floatingCards = document.querySelectorAll(".floating-card");
-  floatingCards.forEach(card => {
+  floatingCards.forEach((card) => {
     card.addEventListener("click", () => {
       // Only execute logic on mobile size
       if (window.innerWidth <= 768) {
         if (card.classList.contains("active")) {
           card.classList.remove("active");
         } else {
-          floatingCards.forEach(c => c.classList.remove("active"));
+          floatingCards.forEach((c) => c.classList.remove("active"));
           card.classList.add("active");
         }
       }
     });
   });
 });
-

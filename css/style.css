@@ -1056,7 +1056,7 @@ button {
   transform: scale(1.05);
 }
 .project-card div {
-  padding: 20px 22px;
+padding: 22px 28px;
   background: #091221;
   position: relative;
   z-index: 2;
